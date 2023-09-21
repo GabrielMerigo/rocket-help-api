@@ -1,3 +1,0 @@
-export enum RepositoriesNames {
-  SOLICITATION_REPOSITORY = 'SOLICITATION_REPOSITORY',
-}

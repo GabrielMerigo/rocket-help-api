@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { SolicitationController } from './solicitation.controller';
 import { SolicitationService } from './solicitation.service';
-import { solicitationProvider } from 'src/repositories/solicitation/provider';
+import { SolicitationEntity } from './entity/solicitation.entity';
 
 @Module({
-  imports: [SolicitationService],
+  imports: [TypeOrmModule.forFeature([SolicitationEntity])],
   controllers: [SolicitationController],
-  providers: [...solicitationProvider, SolicitationService],
+  providers: [SolicitationService],
 })
 export class SolicitationModule {}
