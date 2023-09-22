@@ -2,7 +2,7 @@ import { IsBoolean, IsString, IsUUID } from 'class-validator';
 
 export class CreateSolicitationDTO {
   @IsUUID()
-  id: number;
+  id: string;
 
   @IsString()
   title: string;

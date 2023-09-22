@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { SolicitationService } from './solicitation.service';
 import { CreateSolicitationDTO } from './dtos/create-solicitation.dto';
+import { UniqueIdDTO } from 'src/global/dtos';
 
 @Controller('solicitation')
 export class SolicitationController {
@@ -11,9 +12,18 @@ export class SolicitationController {
     return this.solicitationService.findAll();
   }
 
+  @Get(':id')
+  find(@Param() id: UniqueIdDTO) {
+    return this.solicitationService.find(id);
+  }
+
   @Post()
   create(@Body() body: CreateSolicitationDTO) {
-    console.log(body);
     return this.solicitationService.create(body);
+  }
+
+  @Delete(':id')
+  delete(@Body() id: UniqueIdDTO) {
+    return this.solicitationService.delete(id);
   }
 }

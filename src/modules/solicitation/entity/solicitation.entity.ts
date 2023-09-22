@@ -8,7 +8,7 @@ import {
 @Entity()
 export class SolicitationEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column({ length: 500 })
   title: string;
