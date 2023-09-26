@@ -3,10 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 
 import { InjectRepository } from '@nestjs/typeorm';
 import { SolicitationEntity } from './entity/solicitation.entity';
-import {
-  CreateSolicitationDTO,
-  UpdateSolicitationDTO,
-} from './dtos/standard-fields-create-and-update-dto';
+import { StandardToCreateAndUpdateSolicitationDTO } from './dtos/standard-create-and-update.dto';
 import { UniqueIdDTO } from 'src/global/dtos';
 
 @Injectable()
@@ -44,13 +41,13 @@ export class SolicitationService {
     this.solicitationRepository.remove(solicitationToRemove);
   }
 
-  create(body: CreateSolicitationDTO) {
-    const solicitation = this.solicitationRepository.create(body);
+  create(body: StandardToCreateAndUpdateSolicitationDTO) {
+    const solicitationInstance = this.solicitationRepository.create(body);
 
-    return this.solicitationRepository.save([solicitation]);
+    return this.solicitationRepository.save([solicitationInstance]);
   }
 
-  updateAll(id: string, { ...rest }: UpdateSolicitationDTO) {
+  updateAll(id: string, { ...rest }: StandardToCreateAndUpdateSolicitationDTO) {
     return this.solicitationRepository.update(id, {
       ...rest,
     });

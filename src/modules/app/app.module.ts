@@ -5,9 +5,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SolicitationModule } from '../solicitation/solicitation.module';
 import { env } from 'src/env';
+import { UsersModule } from '../user/users.module';
 
 @Module({
   imports: [
+    UsersModule,
     SolicitationModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -20,7 +22,6 @@ import { env } from 'src/env';
       synchronize: env.NODE_ENV === 'dev' ? true : false, // Olha para a entidade e reflete no banco de dados
       autoLoadEntities: true,
     }),
-    SolicitationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

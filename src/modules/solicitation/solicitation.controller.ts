@@ -8,10 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { SolicitationService } from './solicitation.service';
-import {
-  CreateSolicitationDTO,
-  UpdateSolicitationDTO,
-} from './dtos/standard-fields-create-and-update-dto';
+import { StandardToCreateAndUpdateSolicitationDTO } from './dtos/standard-create-and-update.dto';
 import { UniqueIdDTO } from 'src/global/dtos';
 
 @Controller('solicitation')
@@ -29,7 +26,7 @@ export class SolicitationController {
   }
 
   @Post()
-  create(@Body() body: CreateSolicitationDTO) {
+  create(@Body() body: StandardToCreateAndUpdateSolicitationDTO) {
     return this.solicitationService.create(body);
   }
 
@@ -39,7 +36,10 @@ export class SolicitationController {
   }
 
   @Put(':id')
-  put(@Param() { id }: UniqueIdDTO, @Body() body: UpdateSolicitationDTO) {
+  put(
+    @Param() { id }: UniqueIdDTO,
+    @Body() body: StandardToCreateAndUpdateSolicitationDTO,
+  ) {
     return this.solicitationService.updateAll(id, body);
   }
 }
