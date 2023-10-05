@@ -1,7 +1,15 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
-import { UniqueIdDTO } from 'src/global/dtos';
-import { StandardToCreateAndUpdateUserDTO } from './dtos/create-user.dto';
+import { CreateUserDTO, UpdateUserDTO } from './dtos/user.dto';
+import { UniqueIdDTO } from '../../global/dtos';
 
 @Controller('users')
 export class UsersController {
@@ -18,7 +26,17 @@ export class UsersController {
   }
 
   @Post()
-  create(@Body() body: StandardToCreateAndUpdateUserDTO) {
+  create(@Body() body: CreateUserDTO) {
     return this.userService.create(body);
+  }
+
+  @Delete(':id')
+  delete(@Param() id: UniqueIdDTO) {
+    return this.userService.delete(id);
+  }
+
+  @Put(':id')
+  update(@Param() id, @Body() body: UpdateUserDTO) {
+    return this.userService.update(id, body);
   }
 }

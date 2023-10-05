@@ -13,11 +13,11 @@ export class SolicitationService {
     private readonly solicitationRepository: Repository<SolicitationEntity>,
   ) {}
 
-  async findAll(): Promise<SolicitationEntity[]> {
+  public async findAll(): Promise<SolicitationEntity[]> {
     return this.solicitationRepository.find();
   }
 
-  async find({ id }: UniqueIdDTO) {
+  public async find({ id }: UniqueIdDTO) {
     const solicitation = await this.solicitationRepository.findOne({
       where: {
         id,
@@ -31,7 +31,7 @@ export class SolicitationService {
     return solicitation;
   }
 
-  async delete({ id }: UniqueIdDTO) {
+  public async delete({ id }: UniqueIdDTO) {
     const solicitationToRemove = await this.find({ id });
 
     if (!solicitationToRemove) {
@@ -41,15 +41,18 @@ export class SolicitationService {
     this.solicitationRepository.remove(solicitationToRemove);
   }
 
-  create(body: StandardToCreateAndUpdateSolicitationDTO) {
+  public create(body: StandardToCreateAndUpdateSolicitationDTO) {
     const solicitationInstance = this.solicitationRepository.create(body);
 
     return this.solicitationRepository.save([solicitationInstance]);
   }
 
-  updateAll(id: string, { ...rest }: StandardToCreateAndUpdateSolicitationDTO) {
+  public updateAll(
+    id: string,
+    { ...body }: StandardToCreateAndUpdateSolicitationDTO,
+  ) {
     return this.solicitationRepository.update(id, {
-      ...rest,
+      ...body,
     });
   }
 }

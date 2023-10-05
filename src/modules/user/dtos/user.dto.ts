@@ -1,6 +1,6 @@
 import { IsEmail, IsString, IsStrongPassword } from 'class-validator';
 
-export class StandardToCreateAndUpdateUserDTO {
+export class CreateUserDTO {
   @IsString()
   name: string;
 
@@ -13,3 +13,5 @@ export class StandardToCreateAndUpdateUserDTO {
   })
   password: string;
 }
+
+export class UpdateUserDTO extends CreateUserDTO {}
