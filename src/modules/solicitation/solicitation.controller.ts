@@ -17,27 +17,27 @@ export class SolicitationController {
   constructor(private readonly solicitationService: SolicitationService) {}
 
   @Get()
-  findAll() {
+  public findAll() {
     return this.solicitationService.findAll();
   }
 
   @Get(':id')
-  find(@Param() id: UniqueIdDTO) {
+  public find(@Param() id: UniqueIdDTO) {
     return this.solicitationService.find(id);
   }
 
   @Post()
-  create(@Body() body: StandardToCreateAndUpdateSolicitationDTO) {
+  public create(@Body() body: StandardToCreateAndUpdateSolicitationDTO) {
     return this.solicitationService.create(body);
   }
 
   @Delete(':id')
-  delete(@Body() id: UniqueIdDTO) {
+  public delete(@Body() id: UniqueIdDTO) {
     return this.solicitationService.delete(id);
   }
 
   @Put(':id')
-  put(
+  public put(
     @Param() { id }: UniqueIdDTO,
     @Body() body: StandardToCreateAndUpdateSolicitationDTO,
   ) {

@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { UsersService } from './user.service';
 import { CreateUserDTO, UpdateUserDTO } from './dtos/user.dto';
 import { UniqueIdDTO } from '../../global/dtos';
 
@@ -16,27 +16,27 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @Get()
-  findAll() {
+  public findAll() {
     return this.userService.findAll();
   }
 
   @Get(':id')
-  find(@Param() id: UniqueIdDTO) {
+  public find(@Param() id: UniqueIdDTO) {
     return this.userService.findOne(id);
   }
 
   @Post()
-  create(@Body() body: CreateUserDTO) {
+  public create(@Body() body: CreateUserDTO) {
     return this.userService.create(body);
   }
 
   @Delete(':id')
-  delete(@Param() id: UniqueIdDTO) {
+  public delete(@Param() id: UniqueIdDTO) {
     return this.userService.delete(id);
   }
 
   @Put(':id')
-  update(@Param() id, @Body() body: UpdateUserDTO) {
+  public update(@Param() id, @Body() body: UpdateUserDTO) {
     return this.userService.update(id, body);
   }
 }
