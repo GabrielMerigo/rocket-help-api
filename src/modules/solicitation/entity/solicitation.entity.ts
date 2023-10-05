@@ -8,20 +8,20 @@ import {
 @Entity()
 export class SolicitationEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  public id: string;
 
   @Column({ length: 500 })
-  title: string;
+  public title: string;
 
   @Column('text')
-  problem: string;
+  public problem: string;
 
   @Column('text')
-  solution: string;
+  public solution: string;
 
   @CreateDateColumn()
-  date: string;
+  public date: string;
 
   @Column('boolean')
-  isDone: boolean;
+  public isDone: boolean;
 }

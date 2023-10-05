@@ -2,14 +2,14 @@ import { IsBoolean, IsString } from 'class-validator';
 
 export class StandardToCreateAndUpdateSolicitationDTO {
   @IsString()
-  title: string;
+  public title: string;
 
   @IsString()
-  problem: string;
+  public problem: string;
 
   @IsString()
-  solution: string;
+  public solution: string;
 
   @IsBoolean()
-  isDone: boolean;
+  public isDone: boolean;
 }

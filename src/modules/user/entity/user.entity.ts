@@ -9,24 +9,24 @@ import {
 @Entity()
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  public id: string;
 
   @Column('text')
-  name: string;
+  public name: string;
 
   @Column('text')
-  email: string;
+  public email: string;
 
   @Column('text')
-  password: string;
+  public password: string;
 
   @CreateDateColumn()
-  createAt: string;
+  public createAt: string;
 
   @UpdateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
-  updateAt: Date;
+  public updateAt: Date;
 }
