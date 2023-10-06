@@ -38,6 +38,16 @@ export class UserService {
     return userInstance;
   }
 
+  public async findByEmail(email: string) {
+    const userInstance = await this.userRepository.findOne({
+      where: {
+        email,
+      },
+    });
+
+    return userInstance;
+  }
+
   public async create(body: CreateUserDTO) {
     const userInstance = this.userRepository.create(body);
     return this.userRepository.save([userInstance]);

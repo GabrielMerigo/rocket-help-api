@@ -6,11 +6,13 @@ import { AppService } from './app.service';
 import { SolicitationModule } from '../solicitation/solicitation.module';
 import { env } from 'src/env';
 import { UsersModule } from '../user/user.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
     UsersModule,
     SolicitationModule,
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
