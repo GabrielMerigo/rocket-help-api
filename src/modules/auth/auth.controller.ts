@@ -8,11 +8,11 @@ export class AuthController {
 
   @Post('signUp')
   public async signUp(@Body() body: SignUpDTO) {
-    this.authService.signUp(body);
+    return this.authService.signUp(body);
   }
 
   @Post('signIn')
   public async signIn(@Body() body: SignInDTO) {
-    this.authService.signIn(body);
+    return this.authService.signIn(body);
   }
 }

@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { Body, Injectable } from '@nestjs/common';
+import { BadRequestException, Body, Injectable } from '@nestjs/common';
 import { SignInDTO, SignUpDTO } from './dtos/auth.dtos';
 
 import { UserService } from '../user/user.service';
@@ -17,6 +17,16 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  public checkToken(token: string) {
+    try {
+      const data = this.jwtService.verify(token);
+
+      return data;
+    } catch (e) {
+      throw new BadRequestException(e);
+    }
+  }
+
   public async signIn(@Body() { password, email }: SignInDTO) {
     const user = await this.userService.findByEmail(email);
 
@@ -28,11 +38,13 @@ export class AuthService {
 
     const payload = { sub: user.id, username: user.name };
 
+    const accessToken = this.jwtService.sign(payload, {
+      expiresIn: '15d',
+      secret: env.JWT_SECRET,
+    });
+
     return {
-      accessToken: this.jwtService.sign(payload, {
-        secret: env.JWT_SECRET,
-        expiresIn: '15d',
-      }),
+      accessToken,
     };
   }
 
@@ -50,7 +62,5 @@ export class AuthService {
       email,
       name,
     });
-
-    // rever aqui
   }
 }
