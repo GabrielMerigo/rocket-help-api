@@ -11,8 +11,8 @@ import {
 
 import { SolicitationService } from './solicitation.service';
 import { StandardToCreateAndUpdateSolicitationDTO } from './dtos/standard-create-and-update.dto';
-import { UniqueIdDTO } from 'src/global/dtos';
 import { AuthGuard } from '../../guards/auth.guard';
+import { UniqueIdDTO } from 'src/global/dtos';
 
 @Controller('solicitation')
 @UseGuards(AuthGuard)
