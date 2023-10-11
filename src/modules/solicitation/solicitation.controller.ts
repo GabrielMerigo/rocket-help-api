@@ -40,10 +40,10 @@ export class SolicitationController {
   }
 
   @Put(':id')
-  public put(
+  public update(
     @Param() { id }: UniqueIdDTO,
     @Body() body: StandardToCreateAndUpdateSolicitationDTO,
   ) {
-    return this.solicitationService.updateAll(id, body);
+    return this.solicitationService.update(id, body);
   }
 }

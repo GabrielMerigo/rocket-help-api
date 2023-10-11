@@ -47,7 +47,7 @@ export class SolicitationService {
     return this.solicitationRepository.save([solicitationInstance]);
   }
 
-  public updateAll(
+  public update(
     id: string,
     { ...body }: StandardToCreateAndUpdateSolicitationDTO,
   ) {
