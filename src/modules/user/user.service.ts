@@ -16,11 +16,9 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  public async findOne({ id }: UniqueIdDTO) {
-    return await this.userRepository.findOne({
-      where: {
-        id,
-      },
+  public async show({ id }: UniqueIdDTO) {
+    return await this.find({
+      id,
     });
   }
 

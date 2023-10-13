@@ -34,6 +34,7 @@ export class SolicitationService {
   public async delete({ id }: UniqueIdDTO) {
     const solicitationToRemove = await this.find({ id });
 
+    // rever
     if (!solicitationToRemove) {
       throw new NotFoundException('Solicitation not found');
     }

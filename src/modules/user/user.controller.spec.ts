@@ -52,7 +52,7 @@ describe('User Controller', () => {
     });
 
     it('find method', async () => {
-      const result = await userController.find({ id: 'super-uuid' });
+      const result = await userController.show({ id: 'super-uuid' });
 
       expect(result).toEqual(userEntityMock[0]);
     });

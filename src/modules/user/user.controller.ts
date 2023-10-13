@@ -24,8 +24,8 @@ export class UserController {
   }
 
   @Get(':id')
-  public find(@Param() id: UniqueIdDTO) {
-    return this.userService.findOne(id);
+  public show(@Param() id: UniqueIdDTO) {
+    return this.userService.show(id);
   }
 
   @Post()

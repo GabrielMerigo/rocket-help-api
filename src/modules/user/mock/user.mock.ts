@@ -27,7 +27,7 @@ export const userServiceMock = {
     findAll: jest.fn().mockResolvedValue(userEntityMock),
     update: jest.fn().mockResolvedValue(userEntityMock[0]),
     delete: jest.fn().mockResolvedValue(true),
-    findOne: jest.fn().mockResolvedValue(userEntityMock[0]),
+    show: jest.fn().mockResolvedValue(userEntityMock[0]),
   },
 };
 
